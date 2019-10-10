@@ -71,4 +71,9 @@ class User extends Authenticatable
     public function comments(){
         return $this->hasMany(Comment::class);
     }
+
+    //tiene un perfil
+    public function image(){
+        return $this->morphOne(Image::class,'imageable');
+    }
 }
