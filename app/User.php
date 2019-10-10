@@ -46,4 +46,9 @@ class User extends Authenticatable
     public function level(){
         return $this->belongsTo(Level::class);
     }
+
+    //un usuario puede tener muchos grupos
+    public function groups(){
+        return $this->belongsToMany(Group::class)->withTimestamps();
+    }
 }
