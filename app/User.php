@@ -57,4 +57,18 @@ class User extends Authenticatable
         return $this->hasOneThrough(Location::class,Profile::class);
     }
 
+    //un usuario tiene muchos posts
+    public function posts(){
+        return $this->hasMany(Post::class);
+    }
+
+    //un usuario tiene muchos videos
+    public function videos(){
+        return $this->hasMany(Video::class);
+    }
+
+    //un usuario tiene muchos comentarios
+    public function comments(){
+        return $this->hasMany(Comment::class);
+    }
 }
