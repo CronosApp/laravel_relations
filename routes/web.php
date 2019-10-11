@@ -24,3 +24,11 @@ Route::get('/profile/{id}', function ($id) {
 
     return view('profile', ['user' => $user, 'posts' => $posts, 'videos' => $videos]);
 })->name('profile');
+
+Route::get('/level/{id}', function ($id) {
+    $level = App\Level::findOrFail($id);
+    $posts = $level->posts()->with('category','image','tags')->withCount('comments')->get();
+    $videos = $level->videos()->with('category','image','tags')->withCount('comments')->get();
+
+    return view('level', ['level' => $level, 'posts' => $posts, 'videos' => $videos]);
+})->name('level');
